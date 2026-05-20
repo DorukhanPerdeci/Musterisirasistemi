@@ -1,36 +1,132 @@
-# Simülasyon Projesi: Müşteri Kuyruk Sistemi
-# Genel Bakış
-Bu simülasyon projesi, Python ve SimPy kullanarak bir müşteri kuyruk sistemini modellemektedir. Müşterilerin bir hizmet noktasına gelmesini, gerekirse kuyrukta beklemesini, hizmet almasını ve ardından sistemden ayrılmasını simüle eder. Proje ayrıca bekleme sürelerinin görselleştirilmesini içerir ve sistemin performansına ilişkin istatistiksel analiz sağlar.
+# 🧾 MÜŞTERİ SIRA SİSTEMİ SİMÜLASYONU
 
-# Bağımlılıklar
-Bu proje aşağıdaki bağımlılıkları gerektirir:
+👨‍🎓 Dorukhan Perdeci  
+🎓 Okul No: 21430070029  
 
-SimPy: Süreç tabanlı ayrık olay simülasyon kütüphanesi.
-Matplotlib: Görselleştirmeler oluşturmak için kullanılan bir grafik çizim kütüphanesi.
-Tabulate: Verileri tablolara biçimlendirmek için kullanılan bir kütüphane.
-Bu bağımlılıkları pip aracılığıyla yükleyebilirsiniz: pip install simpy matplotlib tabulate
+---
 
-# Kullanım
-# Sürüm 1: exact_numbers.py
-Bu sürüm, belirli varış aralıkları ve rastgele hizmet süreleri dizileri ile 11 müşteri için simülasyonu göstermektedir.
+## 📌 HAKKINDA
 
-Simülasyonu çalıştırmak için Python betiğini yürütün exact_numbers.py. Sisteminizde Python'ın kurulu olduğundan emin olun.
+Bu proje, Python programlama dili ve özellikle **SimPy kütüphanesi** kullanılarak geliştirilmiş bir **ayrık olay simülasyonu (Discrete Event Simulation)** projesidir. SimPy'nin olay tabanlı yapısından yararlanılarak gerçek hayatta karşılaşılan müşteri kuyruk ve hizmet süreçleri modellenmiştir.
 
-python exact_numbers.py
+Simülasyon; müşterilerin sisteme gelişini, hizmet noktasına yönlendirilmesini, yoğunluk durumunda kuyrukta beklemesini, hizmet almasını ve ardından sistemden ayrılmasını gerçekçi biçimde taklit etmektedir.
 
-# Sürüm 2: theProject.ipynb
-Bu sürüm, rastgele oluşturulmuş varışlar arası süreler ve rastgele oluşturulmuş hizmet süreleri dizileri değerleriyle 100 müşteri için simülasyonu göstermektedir.
+Proje ayrıca müşteri bekleme sürelerinin görselleştirilmesini ve sistem performansına ilişkin istatistiksel analiz yapılmasını sağlamaktadır. Böylece kullanıcı, bir sıra sisteminin çalışma mantığını ve SimPy'nin simülasyon gücünü uygulamalı şekilde gözlemleyebilmektedir.
 
-Simülasyonu çalıştırmak için theProject.ipynbJupyter Notebook veya Jupyter Lab'te Jupyter Notebook'u açın ve hücreleri yürütün.
+---
 
-Simülasyon aşağıdaki çıktıyı verecektir:
+## 📌 PROJENİN AMACI
 
-Varış zamanı, hizmet süresi, kuyrukta bekleme süresi, sistemde geçirilen süre vb. dahil olmak üzere her müşteri için çeşitli ölçütleri gösteren bir tablo.
-Bekleme süresi ve sistem süresinin dağılımını gösteren histogramlar.
-Ek olarak, bu komut dosyası ortalama bekleme süresi, bekleme olasılığı, boş sunucu olasılığı, ortalama hizmet süresi, ortalama varışlar arası süre, bir müşterinin kuyrukta geçirdiği ortalama süre ve bir müşterinin sistemde geçirdiği ortalama süre gibi çeşitli performans ölçütlerini hesaplar ve yazdırır.
+Bu proje ile:
 
-# Simülasyon Parametreleri
-num_customersSimüle edilecek müşteri sayısı.
-interarrival_timesMüşterilerin varışlar arasındaki sürelerini gösteren bir liste.
-random_service_timesMüşterilerin hizmet sürelerini gösteren bir liste.
-Bu parametreleri, ihtiyaçlarınıza göre komut dosyasında ayarlayabilirsiniz.
+- SimPy kütüphanesinin kullanımını öğrenmek
+- Ayrık olay simülasyonu mantığını anlamak
+- Müşteri kuyruk sistemlerini modellemek
+- Hizmet süreçlerinin işleyişini incelemek
+- Müşteri bekleme sürelerini analiz etmek
+- Sistem performansını değerlendirmek
+- Gerçek hayat problemlerini simülasyon yöntemiyle çözmek
+
+---
+
+## ⚙️ KULLANILAN TEKNOLOJİLER
+
+- Python
+- SimPy (Ayrık Olay Simülasyonu)
+- Tkinter (Grafiksel Kullanıcı Arayüzü)
+- Random (Rastgele müşteri oluşturma)
+- Matplotlib (Veri görselleştirme)
+
+---
+
+## 🧠 SİMÜLASYON MANTIĞI
+
+Bu sistem SimPy'nin olay tabanlı simülasyon yapısı ile çalışmaktadır:
+
+- Müşteriler belirli zaman aralıklarında sisteme giriş yapar
+- Gelen müşteriler hizmet kaynağına erişmeye çalışır
+- Hizmet noktası doluysa müşteri sıraya alınır
+- Müşteri uygun kaynak oluşana kadar bekler
+- Hizmet süreci başlatılır
+- İşlem tamamlandıktan sonra müşteri sistemden çıkar
+- Tüm süreçler SimPy zaman yönetimi ile simüle edilir
+
+---
+
+## 🔄 SÜREÇ AKIŞI
+
+1️⃣ Müşteri sisteme gelir  
+
+2️⃣ Hizmet noktası kontrol edilir  
+
+3️⃣ Yoğunluk varsa müşteri kuyruğa alınır  
+
+4️⃣ Müşteri sırasını bekler  
+
+5️⃣ Hizmet süreci başlatılır  
+
+6️⃣ Hizmet tamamlanır  
+
+7️⃣ Müşteri sistemden ayrılır  
+
+---
+
+## 📊 ELDE EDİLEBİLECEK ÇIKTILAR
+
+- Ortalama bekleme süresi
+- Maksimum bekleme süresi
+- Müşteri yoğunluğu
+- Hizmet kullanım oranı
+- Kuyruk uzunluğu
+- Sistem performans istatistikleri
+- Bekleme sürelerinin görselleştirilmesi
+
+---
+
+## ▶️ NASIL ÇALIŞTIRILIR?
+
+### 1️⃣ Gerekli kütüphaneleri yükleyin:
+
+```bash
+pip install simpy
+```
+
+Ek kütüphaneler:
+
+```bash
+pip install matplotlib
+```
+
+### 2️⃣ Programı çalıştırın:
+
+```bash
+python randomsimulation.py
+```
+
+---
+
+## 📁 PROJE YAPISI
+
+```bash
+Musterisirasistemi/
+│
+├── randomsimulation.py
+├── README.md
+└── diğer proje dosyaları
+```
+
+---
+
+## 🚀 GELECEK GELİŞTİRMELER
+
+- Çoklu hizmet noktası desteği
+- Öncelikli müşteri sistemi
+- Gerçek zamanlı grafikler
+- Daha ayrıntılı istatistiksel analizler
+- Gelişmiş kullanıcı arayüzü
+
+---
+
+## 📝 NOT
+
+Bu proje eğitim amaçlı geliştirilmiş olup SimPy kullanılarak ayrık olay simülasyonu mantığını öğretmek ve müşteri sıra sistemlerinin çalışma yapısını modellemek amacıyla hazırlanmıştır.
